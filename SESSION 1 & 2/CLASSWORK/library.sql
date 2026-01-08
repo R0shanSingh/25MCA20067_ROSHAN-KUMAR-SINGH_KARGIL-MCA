@@ -35,3 +35,25 @@ VALUES
 
 SELECT * FROM books;
 SELECT * FROM book_issue;
+
+--UPDATE AVAILABLE BOOKS
+UPDATE books
+SET available_copies = available_copies - 1
+WHERE book_id = 1;
+
+--Obsolete entries are old or outdated 
+-- data that should be removed because they are no longer relevant.
+DELETE FROM book_issue
+WHERE return_date IS NOT NULL;
+
+SELECT CURRENT_USER
+
+CREATE  ROLE LIBRARIAN
+WITH LOGIN PASSWORD 'SHALABH2012@'
+
+SELECT CURRENT_USER;
+GRANT SELECT, INSERT, DELETE ON books TO Librarian;
+GRANT SELECT, INSERT, DELETE ON members TO Librarian;
+GRANT SELECT, INSERT, DELETE ON book_issue TO Librarian;
+
+REVOKE DELETE ON book_issue FROM Librarian;
